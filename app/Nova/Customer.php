@@ -2,6 +2,7 @@
 
 namespace App\Nova;
 
+use App\Nova\Actions\SendInvitation;
 use Illuminate\Http\Request;
 use KirschbaumDevelopment\NovaMail\Actions\SendMail;
 use Laravel\Nova\Fields\HasMany;
@@ -9,22 +10,22 @@ use Laravel\Nova\Fields\ID;
 use KirschbaumDevelopment\NovaMail\Nova\NovaSentMail;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
-
+use \App\Models\Customer as Model;
 class Customer extends Resource
 {
     /**
      * The model the resource corresponds to.
      *
-     * @var class-string<\App\Models\Customer>
+     * @var class-string<Model>
      */
-    public static string $model = \App\Models\Customer::class;
+    public static string $model = Model::class;
 
     /**
      * The single value that should be used to represent the resource when being displayed.
      *
      * @var string
      */
-    public static $title = 'id';
+    public static $title = 'name';
 
     /**
      * The columns that should be searched.
@@ -32,7 +33,7 @@ class Customer extends Resource
      * @var array
      */
     public static $search = [
-        'id','name','surname','phone'
+        'name','surname','phone'
     ];
 
     /**
@@ -98,7 +99,8 @@ class Customer extends Resource
     public function actions(NovaRequest $request): array
     {
         return [
-            SendMail::make()
+            SendInvitation::make(),
+            SendMail::make(),
         ];
     }
 
