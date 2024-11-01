@@ -5,7 +5,7 @@ use App\Http\Controllers\CustomerController;
 
 Route::controller(CustomerController::class)->name("customer.")->group(function () {
     Route::get("/", "index")->name("dashboard");
-    Route::get("/logout", "logout")->name("logout");
+    Route::post("/logout", "logout")->name("logout");
 
     Route::get("/login", "login")->name("login");
     Route::post("/login", "authorize")->name("authorize");

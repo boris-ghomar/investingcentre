@@ -11,3 +11,14 @@ body {
     margin-top: 20px;
     border-radius: 5px;
 }
+
+.customer-dashboard__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
+    background-color: white;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 20px;
+}

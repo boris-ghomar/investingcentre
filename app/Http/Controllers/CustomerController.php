@@ -15,7 +15,7 @@ class CustomerController extends Controller
 {
     public function index()
     {
-
+        return Inertia::render("Dashboard", []);
     }
 
     public function register(CustomerRegistrationRequest $request)
@@ -94,5 +94,12 @@ class CustomerController extends Controller
                 "d" => $request->d,
             ])
         ]);
+    }
+
+    public function logout()
+    {
+        // logout customer
+
+        return to_route("customer.login");
     }
 }
